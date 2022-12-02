@@ -193,7 +193,7 @@ function App() {
           {/* working exprerience */}
           <div className=" mt-5">
             <p className=" text-xl font-medium text-gray-700">Working Experience</p>
-            <p className=" text-blue-500  mt-1">Purple Algorithams Ltd. - Junior Web Developer</p>
+            <p className=" text-blue-600  mt-1">Purple Algorithams Ltd. - Junior Web Developer</p>
             <p className=" text-gray-600">April 2022 - Present</p>
             <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
               <li className=" my-1">Develop clean and responsive frontend UI</li>
@@ -204,7 +204,7 @@ function App() {
           {/* Projects */}
           <div className=" mt-5">
             <p className=" text-xl font-medium text-gray-700">Projects</p>
-            <p className=" text-blue-500  mt-1">Data Automation - Full Stack Developer</p>
+            <p className=" text-blue-600  mt-1">Data Automation - Full Stack Developer</p>
             <p className=" text-gray-600">April 2022 - July</p>
             <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
               <li className=" my-1">Responsive ui created using react js</li>
@@ -215,7 +215,7 @@ function App() {
             <p className=" mt-1 text-gray-500 text-sm">Code : https://github.com/Saykot1997/dataAutomation_server.git</p>
             <span className=" w-full h-[1px] mt-4 mb-1 inline-block bg-gray-300"></span>
             <div>
-              <p className=" text-blue-500 ">Air Ticket - Frontend Developer</p>
+              <p className=" text-blue-600 ">Air Ticket - Frontend Developer</p>
               <p className=" text-gray-600">October 2022 - November 2022</p>
               <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
                 <li className=" my-1">Responsive ui created using react js</li>
@@ -227,7 +227,7 @@ function App() {
             </div>
             <span className=" w-full h-[1px] mt-4 mb-1 inline-block bg-gray-300"></span>
             <div>
-              <p className=" text-blue-500 ">UAE Tourist Visa - Backend Developer</p>
+              <p className=" text-blue-600 ">UAE Tourist Visa - Backend Developer</p>
               <p className=" text-gray-600">Aujust 2022 - September 2022</p>
               <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
                 <li className=" my-1">Create Api using node js, express js.</li>
