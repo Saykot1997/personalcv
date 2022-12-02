@@ -23,19 +23,78 @@ import kubernetesicon from "./photos/Kubernetes.png"
 import jenkinsicon from "./photos/jenkins.png"
 import ansibleicon from "./photos/ansible.png"
 import nagiosicon from "./photos/nagios.png"
+import { useState } from "react"
 
 
 function App() {
+  const [wordData, setWorkData] = useState([{
+    soureCode: "https://github.com/Saykot1997/dataAutomation_server.git",
+    link: "http://react.dataautomation.gic.ltd",
+    name: "Data Automation - Full Stack Developer",
+    duration: "April 2022 - July 2022",
+    responsibilities: [
+      "Responsive ui created using react js",
+      "Create sucure API using node js, express js",
+      "Deploy app in Cloud platform and maintain"
+    ]
+  },
+  {
+    soureCode: "https://github.com/Saykot1997/airticket-static.git",
+    link: "https://airticket.gic.ltd/",
+    name: "Air Ticket - Frontend Developer",
+    duration: "October 2022 - November 2022",
+    responsibilities: [
+      "Created responsive ui using react js",
+      "Connect to api for flight data",
+      "Deploy app in Cloud platform and maintain"
+    ]
+  },
+  {
+    soureCode: "https://github.com/Saykot1997/propertysell-public.git",
+    link: "https://alfakhama.xyz/",
+    name: "Property Sell - Backend Developer",
+    duration: "Aujust 2022 - September 2022",
+    responsibilities: [
+      "Create Api using node js, express js.",
+      "Deploy app in Cloud platform and maintain"
+    ]
+  }
+  ])
 
 
+  const [aboutme, setAboutme] = useState(`As a Full Stack Web Developer. I have clear knowledge of software development life cycle and have working experience on both frontend and backend also some devops tools knowledge like Docker, Kubernetes, Jenkins, Ansible, AWS EC2 and Linux.I have skill to implement CI/CD pipeline. Primarily, I work on Javasctipt but have basic knowledge on several programing languages like Python and Php.`)
+
+  const [portfolioLink, setPortfolioLink] = useState("https://neumorphismportfolio.vercel.app")
+  const [editMode, setEditmod] = useState(false)
+  const toggleEditMode = () => {
+    setEditmod(!editMode)
+  }
   const print = () => {
     window.print()
   }
 
+  const changeValue = (index, value, option, resIndex) => {
+
+    const oldData = [...wordData]
+
+    if (option === "res") {
+      oldData[index].responsibilities[resIndex] = value
+      setWorkData(oldData)
+    } else {
+      oldData[index][option] = value
+      setWorkData(oldData)
+    }
+  }
+
+
+
   return (
     // <div className=" w-full bg-gray-">
     <div className=" w-full h-full px-60 py-10 print:p-0 font-Roboto bg-gray-300 print:bg-white">
-      {/* <button onClick={print} className=" bg-blue-500 py-2 px-2 rounded-md text-white absolute top-5 right-5 print:hidden">Print</button> */}
+      <div className=" absolute top-5 right-5 print:hidden flex items-center gap-3">
+        <button onClick={print} className=" bg-blue-500 py-2 px-2 rounded-md text-white ">Print</button>
+        <button onClick={toggleEditMode} className=" bg-purple-500 py-2 px-2 rounded-md text-white">{editMode ? "Save" : "Edit"}</button>
+      </div>
       <div className=" w-full h-full grid grid-cols-5">
         <div className=" col-span-2 h-full w-full bg-gray-100">
           {/* desigle area */}
@@ -183,16 +242,25 @@ function App() {
           <div className=" w-full">
             <p className=" text-4xl font-semibold">Shohel <span className=" text-blue-600">Mia</span></p>
             <p className=" text-gray-600 text-lg font-medium my-[2px]">Full Stack Web Developer</p>
-            <p className=" text-gray-500">Portfolio link: https://neumorphismportfolio.vercel.app</p>
+            {
+              editMode ?
+                <div className="">
+                  <span className=" w-full">Portfolio link:</span>
+                  <input type="text" className=" p-2 border w-full border-blue-300 rounded focus:outline-none" value={portfolioLink} onChange={(e) => setPortfolioLink(e.target.value)} />
+                </div>
+                :
+                <p className=" text-gray-500">Portfolio link: {portfolioLink}</p>
+            }
           </div>
           {/* about */}
           <div className=" mt-5">
             <p className=" text-xl font-medium text-gray-700">About</p>
+            {/* <p className=" mt-1 text-justify print:leading-5 text-sm text-gray-600">{aboutme}</p> */}
             <p className=" mt-1 text-justify print:leading-5 text-sm text-gray-600">As a <span className=" font-medium">Full Stack Web Developer</span>. I have clear knowledge of <span className=" font-medium">software development life cycle</span> and have working experience on both <span className=" font-medium">frontend</span> and <span className=" font-medium">backend</span> also some <span className=" font-medium">devops</span> tools knowledge like <span className=" font-medium">Docker, Kubernetes, Jenkins, Ansible, AWS EC2</span> and <span className=" font-medium">Linux</span>.I have skill to implement <span className=" font-medium">CI/CD pipeline</span>. Primarily, I work on <span className=" font-medium">Javasctipt</span> but have basic knowledge on several programing languages like <span className=" font-medium">Python</span> and <span className=" font-medium">Php</span>.</p>
           </div>
           {/* working exprerience */}
           <div className=" mt-5">
-            <p className=" text-xl font-medium text-gray-700">Working Experience</p>
+            <p className=" text-lg font-medium text-gray-700">Working Experience</p>
             <p className=" text-blue-600  mt-1">Purple Algorithams Ltd. - Junior Web Developer</p>
             <p className=" text-gray-600">April 2022 - Present</p>
             <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
@@ -203,39 +271,58 @@ function App() {
           </div>
           {/* Projects */}
           <div className=" mt-5">
-            <p className=" text-xl font-medium text-gray-700">Projects</p>
-            <p className=" text-blue-600  mt-1">Data Automation - Full Stack Developer</p>
-            <p className=" text-gray-600">April 2022 - July</p>
-            <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
-              <li className=" my-1">Responsive ui created using react js</li>
-              <li className=" my-1">Create sucure API using node js, express js</li>
-              <li className=" my-1">Deploy app in Cloud platform and maintain</li>
-            </ul>
-            <p className=" mt-2 text-gray-500 text-sm">Link : http://react.dataautomation.gic.ltd</p>
-            <p className=" mt-1 text-gray-500 text-sm">Code : https://github.com/Saykot1997/dataAutomation_server.git</p>
-            <span className=" w-full h-[1px] mt-4 mb-1 inline-block bg-gray-300"></span>
-            <div>
-              <p className=" text-blue-600 ">Air Ticket - Frontend Developer</p>
-              <p className=" text-gray-600">October 2022 - November 2022</p>
-              <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
-                <li className=" my-1">Responsive ui created using react js</li>
-                <li className=" my-1">Connect to api for flight data</li>
-                <li className=" my-1">Deploy app in Cloud platform and maintain</li>
-              </ul>
-              <p className=" mt-2 text-gray-500 text-sm">Link : https://airticket.gic.ltd/</p>
-              <p className=" mt-1 text-gray-500 text-sm">Code : https://github.com/Saykot1997/airticket-static.git</p>
-            </div>
-            <span className=" w-full h-[1px] mt-4 mb-1 inline-block bg-gray-300"></span>
-            <div>
-              <p className=" text-blue-600 ">UAE Tourist Visa - Backend Developer</p>
-              <p className=" text-gray-600">Aujust 2022 - September 2022</p>
-              <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
-                <li className=" my-1">Create Api using node js, express js.</li>
-                <li className=" my-1">Deploy app in Cloud platform and maintain</li>
-              </ul>
-              <p className=" mt-2 text-gray-500 text-sm">Link : http://myu.ae/</p>
-              <p className=" mt-1 text-gray-500 text-sm">Code : https://github.com/Saykot1997/onlineapplicationpulic</p>
-            </div>
+            <p className=" text-lg font-medium text-gray-700">Projects</p>
+            {
+              wordData.map((work, i) => {
+                return (
+                  <div key={i}>
+                    {
+                      editMode ?
+                        <>
+                          <input type="text" className=" w-full py-1 px-2 border border-blue-500 rounded focus:outline-none" value={work.name} onChange={(e) => { changeValue(i, e.target.value, "name") }} />
+                          <input type="text" className=" w-full py-1 px-2 border border-blue-500 rounded focus:outline-none" value={work.duration} onChange={(e) => { changeValue(i, e.target.value, "duration") }} />
+                          <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
+                            {
+                              work.responsibilities.map((r, ind) => {
+                                return (
+
+                                  <input key={ind} type="text" className=" w-full py-1 px-2 border border-blue-500 rounded focus:outline-none" value={r} onChange={(e) => { changeValue(i, e.target.value, "res", ind) }} />
+                                )
+                              })
+                            }
+                          </ul>
+                          <input type="text" className=" w-full py-1 px-2 border border-blue-500 rounded focus:outline-none" value={work.link} onChange={(e) => { changeValue(i, e.target.value, "link") }} />
+                          <input type="text" className=" w-full py-1 px-2 border border-blue-500 rounded focus:outline-none" value={work.soureCode} onChange={(e) => { changeValue(i, e.target.value, "soureCode") }} />
+                          {
+                            i < wordData.length - 1 &&
+                            <span className=" w-full h-[1px] mt-3 mb-1 inline-block bg-gray-300"></span>
+                          }
+                        </>
+                        :
+                        <>
+                          <p className=" text-blue-600  mt-1">{work.name}</p>
+                          <p className=" text-gray-600">{work.duration}</p>
+                          <ul className=" mt-1 text-gray-500 text-sm list-disc pl-10">
+                            {
+                              work.responsibilities.map((r, i) => {
+                                return (
+                                  <li className=" my-1" key={i}>{r}</li>
+                                )
+                              })
+                            }
+                          </ul>
+                          <p className=" mt-2 text-gray-500 text-sm">Link : {work.link}</p>
+                          <p className=" mt-1 text-gray-500 text-sm">Code : {work.soureCode}</p>
+                          {
+                            i < wordData.length - 1 &&
+                            <span className=" w-full h-[1px] mt-3 mb-1 inline-block bg-gray-300"></span>
+                          }
+                        </>
+                    }
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
       </div>
